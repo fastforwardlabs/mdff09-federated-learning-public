@@ -885,9 +885,9 @@ deal with others.</p>
 <p>In order for federated learning to be possible, the nodes must be able to
 <em>train</em> a model. The ability to do <em>inference</em> (i.e., apply a pretrained model)
 is not sufficient. Training is not always possible on edge devices such as
-specialized IoT hardware. This is particularly true in the case of neural networks.
-This difficulty is due to the current state of the toolchain rather than anything
-fundamental, and we expect that limitation to go away in the near
+specialized IoT hardware. This is particularly true in the case of neural
+networks. This difficulty is due to the current state of the toolchain rather
+than anything fundamental, and we expect that limitation to go away in the near
 future.<sup class="footnote-ref"><a href="#fn5" id="fnref5">[5]</a></sup></p>
 <p>But even if you can’t train on edge devices (and therefore can’t use them for
 federated learning), machine learning inference on edge devices is still a
@@ -985,13 +985,7 @@ choose our modeling approach, our prototype uses the simplest modeling approach
 that performs significantly better than a naive model. A naive model of the
 CMAPSS dataset predicts RUL by assuming that every engine in the test set has a
 total useful life of 181 time steps (the median life of engines in the training
-set).footnote:[In a more familiar classification context, the naive model is
-usually a dummy classifier that always predicts the most prevalent class in the
-training set. Such a dummy classifier will have an accuracy equal to the
-prevalence of that class. At a minimum, a trained model should have an accuracy
-greater than this. (For example, if 90% of emails are spam, a spam classifier
-with an accuracy less then 90% is doing worse than
-chance!)] This naive model has a root mean squared error of 94.2.</p>
+set).<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup> This naive model has a root mean squared error of 94.2.</p>
 <figure><img src="figures/ff09-16.png" alt="Each time step is treated as a training example."><figcaption>Each time step is treated as a training example.</figcaption></figure>
 <p>The simplest modeling approach is to treat each time step as a training example.
 In this approach, an engine that has a total useful life of 314 time steps
@@ -1002,17 +996,10 @@ can only use the sensor readings at each instant to predict the remaining
 useful life.</p>
 <p>Despite its simplicity, this formulation results in a model that is comfortably
 better than the naive model, so we use it rather than, e.g., modeling the full
-sequence with a recurrent neural network.footnote:[See <em>FF04: Summarization</em>
-for more on recurrent neural networks. For the particular problem of modeling
-the time until an event (e.g., customer churn, engine failure), we like the
-<a href="https://ragulpr.github.io/2016/12/22/WTTE-RNN-Hackless-churn-modeling/">Weibull
-Time-to-Event RNN</a>. But some machine learning experts have found that an
-autoregressive feed-forward neural network (i.e., a regular or convolutional
-neural network) also works well for sequence problems. See
-<a href="https://bair.berkeley.edu/blog/2018/08/06/recurrent/">When Recurrent Models
-Don’t Need to be Recurrent</a>] The 400 engines in the set became 58,798 training
-examples and 16,245 test examples, each with 16 features. We standardized the
-features and target variable for numerical stability.</p>
+sequence with a recurrent neural network.<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup> The 400
+engines in the set became 58,798 training examples and 16,245 test examples,
+each with 16 features. We standardized the features and target variable for
+numerical stability.</p>
 <p>The model that learns how to predict the RUL from the 16 input features is a
 simple neural network with one hidden layer. The non-federated version of this
 model (i.e., trained with direct access to all the data on a single machine) has
@@ -1181,10 +1168,10 @@ treatments and predict outcomes. But the training data required to apply
 machine learning to these problems is of course extremely sensitive. The
 consequences of actual and potential privacy violations can be serious. For
 example, Facebook was recently forced to distance itself from press reports that it was
-sharing anonymized data with hospitals,<sup class="footnote-ref"><a href="#fn9" id="fnref9">[9]</a></sup> and a British hospital was reprimanded for sharing the
+sharing anonymized data with hospitals,<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup> and a British hospital was reprimanded for sharing the
 health records of 1.6 million patients with Google DeepMind as part of a trial
 to test an alert, diagnosis, and detection system for acute kidney
-injury.<sup class="footnote-ref"><a href="#fn10" id="fnref10">[10]</a></sup></p>
+injury.<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup></p>
 <p>By keeping the training data in the hands of patients or providers, federated
 learning has the potential to make it possible to collaboratively build models
 that save lives and make huge profits. The European Commission’s Innovative
@@ -1216,7 +1203,7 @@ someone else’s financial responsibility entirely (see <a href="#industrial-iot
 <p>Machine learning is increasingly being applied to video data. Applications include home
 security cameras and baby monitors, in-store video for retail analytics, and
 autonomous vehicles. It’s expensive to move lots of video from multiple sources
-over a network.<sup class="footnote-ref"><a href="#fn11" id="fnref11">[11]</a></sup> If those sources do
+over a network.<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup> If those sources do
 not have fixed connections (such as in the case of autonomous vehicles), it can be almost
 impossible. Assuming you can move the data, it can be difficult to store it
 once you get it to the datacenter because of its volume. And when the video is
@@ -1301,7 +1288,7 @@ monetize those cycles for training of models, and will enable users of
 models to pay for the data and compute resources necessary to create them.
 OpenMined needs to do all this while guarding against bad actors who seek to
 violate the privacy of users of the marketplace, to poison models with bad
-training training data, or to steal models.<sup class="footnote-ref"><a href="#fn12" id="fnref12">[12]</a></sup> These are ambitious goals! Some of the project’s progress
+training training data, or to steal models.<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup> These are ambitious goals! Some of the project’s progress
 is visible in <a href="PySyft">4.3.1</a>.</p>
 <h3 id="tools-and-vendors">Tools and Vendors</h3>
 <p>At the time of this writing we could not identify any commercial vendors of
@@ -1406,7 +1393,7 @@ requires that:</p>
 <li>Data must be collected for a specific purpose.</li>
 <li>That purpose must be one to which the user has consented.</li>
 <li>The data must be necessary to achieve that purpose.</li>
-<li>It must be deleted when it is no longer necessary for any purpose.<sup class="footnote-ref"><a href="#fn13" id="fnref13">[13]</a></sup></li>
+<li>It must be deleted when it is no longer necessary for any purpose.<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup></li>
 </ul>
 </div>
 <p>The 2012 White House report
@@ -1447,9 +1434,9 @@ attack vectors.</p>
 only the ability to query the model several times. Anyone with indirect access
 to the model via an API can attempt to attack it in this way. This attack
 vector is not unique (or any more dangerous) in federated
-learning.<sup class="footnote-ref"><a href="#fn14" id="fnref14">[14]</a></sup> The usual protection against it is
+learning.<sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup> The usual protection against it is
 <em>differential privacy</em>. Differential privacy is a large and mathematically
-formal field with applications far beyond machine learning.<sup class="footnote-ref"><a href="#fn15" id="fnref15">[15]</a></sup> In a production
+formal field with applications far beyond machine learning.<sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup> In a production
 machine learning context, its application generally means that the server adds
 noise to the weights of the model before opening it up to users.</p>
 <p>In a federated learning setting where the server and nodes are justified in
@@ -1468,7 +1455,7 @@ on that node.</p>
 <p>This attack is more difficult to carry out against modern (and more complex)
 models in practice. The risk can be mitigated by differential privacy (again)
 or secure aggregation. The differential privacy approach has each node add
-noise to its model before sharing it with the server.<sup class="footnote-ref"><a href="#fn16" id="fnref16">[16]</a></sup> Secure
+noise to its model before sharing it with the server.<sup class="footnote-ref"><a href="#fn18" id="fnref18">[18]</a></sup> Secure
 aggregation protocols make it possible for the server to compute the average of
 the node models using encrypted copies which it does not have the ability to
 decrypt. Both these approaches add communication and computation overhead, but
@@ -1501,11 +1488,11 @@ learning network must be robust against this possibility in the algorithmic
 sense (see <a href="#systems-issues">2.7 Systems Issues</a>). This is in addition to one of the challenges that the
 GDPR’s “right to be forgotten” poses to machine learning in all forms: what
 happens to the trained model if the source of the training data withdraws
-consent?<sup class="footnote-ref"><a href="#fn17" id="fnref17">[17]</a></sup></p>
+consent?<sup class="footnote-ref"><a href="#fn19" id="fnref19">[19]</a></sup></p>
 <h3 id="environmental-impact">Environmental Impact</h3>
 <p>Internet-connected devices will be responsible for 20% of the world’s
 electricity consumption by
-2025.<sup class="footnote-ref"><a href="#fn18" id="fnref18">[18]</a></sup> In addition to the proliferation of such devices in
+2025.<sup class="footnote-ref"><a href="#fn20" id="fnref20">[20]</a></sup> In addition to the proliferation of such devices in
 technologically advanced countries, access to the internet is increasingly
 considered a <a href="http://digitallibrary.un.org/record/845728?ln=en">human right</a>.
 With billions of people coming online, it is important to consider the
@@ -1534,11 +1521,11 @@ up all their bandwidth.</p>
 battery-powered devices. That’s because the radio antenna is the most
 power-hungry part of smartphones and specialized edge hardware. It consumes
 more energy than a device’s sensors or processor, by a factor of tens,
-hundreds, or even thousands.<sup class="footnote-ref"><a href="#fn19" id="fnref19">[19]</a></sup> Users will
+hundreds, or even thousands.<sup class="footnote-ref"><a href="#fn21" id="fnref21">[21]</a></sup> Users will
 refuse to participate in a federated network that uses up all their battery.</p>
 <p>Clearly, then, it’s valuable to reduce data transfer. But how? One set of
 approaches reduces the size of the trained model that is transferred to and
-from each node.<sup class="footnote-ref"><a href="#fn20" id="fnref20">[20]</a></sup> Options to do
+from each node.<sup class="footnote-ref"><a href="#fn22" id="fnref22">[22]</a></sup> Options to do
 this include structured updates (where the training process restricts the model parameters
 such that they can be parameterized more compactly) and sketched updates (where the
 model can be trained in the usual way, but is lossily compressed—i.e.,
@@ -1550,10 +1537,10 @@ not only saves on communication by transferring fewer copies of the model, but
 speeds up the overall process by eliminating the latency associated with
 establishing a connection. Some researchers have proposed eliminating rounds by
 instructing nodes to report back only when they have accumulated significant
-changes to the model.<sup class="footnote-ref"><a href="#fn21" id="fnref21">[21]</a></sup>
+changes to the model.<sup class="footnote-ref"><a href="#fn23" id="fnref23">[23]</a></sup>
 Others have suggested decreasing the probability that a given node is asked to
 participate in a particular round by the server (perhaps in proportion to its
-power or connection speed).<sup class="footnote-ref"><a href="#fn22" id="fnref22">[22]</a></sup></p>
+power or connection speed).<sup class="footnote-ref"><a href="#fn24" id="fnref24">[24]</a></sup></p>
 <figure><img src="figures/ff09-22.png" alt="A node that is not participating in a particular round of federated learning saves bandwidth."><figcaption>A node that is not participating in a particular round of federated learning saves bandwidth.</figcaption></figure>
 <p>This is an area in which rapid progress was being made even as we wrote
 this report. We look forward to further advances that make it easier to use
@@ -1757,9 +1744,9 @@ constructing a learning curve using the data you do have. <a href="#fnref3" clas
 <li id="fn4" class="footnote-item"><p>Power consumption and communication
 costs are closely related. See <a href="#reducing-communications-cost">6.1 Reducing Communications Cost</a> for more on this topic. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn5" class="footnote-item"><p>See &lt;<ondevice>&gt; and
-<a href="https://petewarden.com/2018/10/04/what-does-it-take-to-train-deep-learning-models-on-device/">“What
-Does It Take to Train Deep Learning Models On-Device?”</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
+<li id="fn5" class="footnote-item"><p>See <a href="#mobile-and-edge">4.3.4 Mobile And Edge</a> and <a href="https://petewarden.com/2018/10/04/what-does-it-take-to-train-deep-learning-models-on-device/">“What Does It Take
+to Train Deep Learning Models
+On-Device?”</a> <a href="#fnref5" class="footnote-backref">↩︎</a></p>
 </li>
 <li id="fn6" class="footnote-item"><p>See
 <a href="https://read.acloud.guru/how-we-built-a-big-data-analytics-platform-on-aws-for-100-large-users-for-under-2-a-month-b37425b6cc4">“How
@@ -1778,75 +1765,93 @@ is available from the
 <a href="https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/">NASA
 website</a> <a href="#fnref8" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn9" class="footnote-item"><p>The project is on hiatus so
+<li id="fn9" class="footnote-item"><p>In a more familiar classification context, the naive model is
+usually a dummy classifier that always predicts the most prevalent class in the
+training set. Such a dummy classifier will have an accuracy equal to the
+prevalence of that class. At a minimum, a trained model should have an accuracy
+greater than this. (For example, if 90% of emails are spam, a spam classifier
+with an accuracy less then 90% is doing worse than
+chance!) <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn10" class="footnote-item"><p>See <em>FF04: Summarization</em>
+for more on recurrent neural networks. For the particular problem of modeling
+the time until an event (e.g., customer churn, engine failure), we like the
+<a href="https://ragulpr.github.io/2016/12/22/WTTE-RNN-Hackless-churn-modeling/">Weibull Time-to-Event
+RNN</a>.
+But some machine learning experts have found that an autoregressive feed-forward
+neural network (i.e., a regular or convolutional neural network) also works well
+for sequence problems. See <a href="https://bair.berkeley.edu/blog/2018/08/06/recurrent/">When Recurrent Models Don’t Need to be
+Recurrent</a> <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn11" class="footnote-item"><p>The project is on hiatus so
 that Facebook can focus on “other important work, including doing a better job
 of protecting people’s data.” See
 <a href="https://www.cnbc.com/2018/04/05/facebook-building-8-explored-data-sharing-agreement-with-hospitals.html">“Facebook
 Sent a Doctor on a Secret Mission to Ask Hospitals to Share Patient Data,”</a>
-CNBC, April 5, 2018. <a href="#fnref9" class="footnote-backref">↩︎</a></p>
+CNBC, April 5, 2018. <a href="#fnref11" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn10" class="footnote-item"><p>See <a href="https://ico.org.uk/about-the-ico/news-and-events/news-and-blogs/2017/07/royal-free-google-deepmind-trial-failed-to-comply-with-data-protection-law/">“Royal
+<li id="fn12" class="footnote-item"><p>See <a href="https://ico.org.uk/about-the-ico/news-and-events/news-and-blogs/2017/07/royal-free-google-deepmind-trial-failed-to-comply-with-data-protection-law/">“Royal
 Free - Google DeepMind Trial Failed to Comply with Data Protection Law,”</a>
-Information Commissioner’s Office, July 3, 2017. <a href="#fnref10" class="footnote-backref">↩︎</a></p>
+Information Commissioner’s Office, July 3, 2017. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn11" class="footnote-item"><p><a href="https://petewarden.com/2018/06/11/why-the-future-of-machine-learning-is-tiny/">“Why
+<li id="fn13" class="footnote-item"><p><a href="https://petewarden.com/2018/06/11/why-the-future-of-machine-learning-is-tiny/">“Why
 the Future of Machine Learning Is Tiny”</a> tells the story of a person with an
 in-home camera system who experienced significantly higher ISP usage in the
 month of December than in the rest of the year. Why? Because
 “his blinking Christmas lights caused the video stream compression ratio to drop
-dramatically, since so many more frames had differences.” <a href="#fnref11" class="footnote-backref">↩︎</a></p>
+dramatically, since so many more frames had differences.” <a href="#fnref13" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn12" class="footnote-item"><p>See
+<li id="fn14" class="footnote-item"><p>See
 <a href="https://arxiv.org/abs/1807.00459">“How to Backdoor Federated Learning”</a> by
-Eugene Bagdasaryan et al. <a href="#fnref12" class="footnote-backref">↩︎</a></p>
+Eugene Bagdasaryan et al. <a href="#fnref14" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn13" class="footnote-item"><p>This
+<li id="fn15" class="footnote-item"><p>This
 informal language is taken from
 <a href="https://blog.acolyer.org/2018/03/21/on-purpose-and-by-necessity-compliance-under-the-gdpr/">“On
-Purpose and by Necessity: Compliance Under the GDPR.”</a> <a href="#fnref13" class="footnote-backref">↩︎</a></p>
+Purpose and by Necessity: Compliance Under the GDPR.”</a> <a href="#fnref15" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn14" class="footnote-item"><p>See e.g. <a href="https://arxiv.org/abs/1610.05820">“Membership
+<li id="fn16" class="footnote-item"><p>See e.g. <a href="https://arxiv.org/abs/1610.05820">“Membership
 Inference Attacks Against Machine Learning Models”</a> by Reza Shokri et al. and
 <a href="https://dl.acm.org/citation.cfm?id=2813677">“Model Inversion Attacks that
 Exploit Confidence Information and Basic Countermeasures”</a> by Matt Fredrikson,
-Somesh Jha, and Thomas Ristenpart. <a href="#fnref14" class="footnote-backref">↩︎</a></p>
+Somesh Jha, and Thomas Ristenpart. <a href="#fnref16" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn15" class="footnote-item"><p>For a
+<li id="fn17" class="footnote-item"><p>For a
 modern, accessible, ML-oriented introduction we recommend
 <a href="http://www.cleverhans.io/privacy/2018/04/29/privacy-and-machine-learning.html">“Privacy
 and Machine Learning: Two Unexpected Allies?”</a> by Nicolas Papernot and Ian
 Goodfellow. For a more general overview, we recommend the short and mercifully
 informal three-part series
 <a href="https://www.accessnow.org/understanding-differential-privacy-matters-digital-rights/">“Understanding
-Differential Privacy and Why It Matters for Digital Rights.”</a> <a href="#fnref15" class="footnote-backref">↩︎</a></p>
+Differential Privacy and Why It Matters for Digital Rights.”</a> <a href="#fnref17" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn16" class="footnote-item"><p>See Naman
+<li id="fn18" class="footnote-item"><p>See Naman
 Agarwal et al.'s <a href="https://arxiv.org/abs/1805.10559">“cpSGD:
-Communication-Efficient and Differentially-Private Distributed SGD”</a>. <a href="#fnref16" class="footnote-backref">↩︎</a></p>
+Communication-Efficient and Differentially-Private Distributed SGD”</a>. <a href="#fnref18" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn17" class="footnote-item"><p>See e.g. Section IV.B of
+<li id="fn19" class="footnote-item"><p>See e.g. Section IV.B of
 <a href="http://dx.doi.org/10.2139/ssrn.2972855">“Slave to the Algorithm? Why a ‘Right to
 an Explanation’ Is Probably Not the Remedy You Are Looking For,”</a> by Lilian Edwards and
-Michael Veale. <a href="#fnref17" class="footnote-backref">↩︎</a></p>
+Michael Veale. <a href="#fnref19" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn18" class="footnote-item"><p><a href="https://www.theguardian.com/environment/2017/dec/11/tsunami-of-data-could-consume-fifth-global-electricity-by-2025">“Tsunami
+<li id="fn20" class="footnote-item"><p><a href="https://www.theguardian.com/environment/2017/dec/11/tsunami-of-data-could-consume-fifth-global-electricity-by-2025">“Tsunami
 of Data Could Consume One Fifth of Global Electricity by 2025”</a>, <em>The Guardian</em>,
-December 11, 2017. <a href="#fnref18" class="footnote-backref">↩︎</a></p>
+December 11, 2017. <a href="#fnref20" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn19" class="footnote-item"><p>See
+<li id="fn21" class="footnote-item"><p>See
 <a href="https://petewarden.com/2018/06/11/why-the-future-of-machine-learning-is-tiny/">“Why
-the Future of Machine Learning Is Tiny”</a> for more detailed numbers. <a href="#fnref19" class="footnote-backref">↩︎</a></p>
+the Future of Machine Learning Is Tiny”</a> for more detailed numbers. <a href="#fnref21" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn20" class="footnote-item"><p>See <a href="https://arxiv.org/abs/1610.05492">“Federated Learning:
-Strategies for Improving Communication Efficiency”</a> by Jakub Konečný et al. <a href="#fnref20" class="footnote-backref">↩︎</a></p>
+<li id="fn22" class="footnote-item"><p>See <a href="https://arxiv.org/abs/1610.05492">“Federated Learning:
+Strategies for Improving Communication Efficiency”</a> by Jakub Konečný et al. <a href="#fnref22" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn21" class="footnote-item"><p>See <a href="https://arxiv.org/abs/1712.01887">“Deep Gradient
+<li id="fn23" class="footnote-item"><p>See <a href="https://arxiv.org/abs/1712.01887">“Deep Gradient
 Compression: Reducing the Communication Bandwidth for Distributed Training”</a> by
 Yujun Lin et al. and <a href="https://arxiv.org/abs/1805.09965">“LAG: Lazily Aggregated
-Gradient for Communication-Efficient Distributed Learning”</a> by Tianyi Chen et al. <a href="#fnref21" class="footnote-backref">↩︎</a></p>
+Gradient for Communication-Efficient Distributed Learning”</a> by Tianyi Chen et al. <a href="#fnref23" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn22" class="footnote-item"><p>See Takayuki Nishio and Ryo Yonetani’s <a href="https://arxiv.org/abs/1804.08333">“Client Selection for Federated Learning
-with Heterogeneous Resources in Mobile Edge.”</a> <a href="#fnref22" class="footnote-backref">↩︎</a></p>
+<li id="fn24" class="footnote-item"><p>See Takayuki Nishio and Ryo Yonetani’s <a href="https://arxiv.org/abs/1804.08333">“Client Selection for Federated Learning
+with Heterogeneous Resources in Mobile Edge.”</a> <a href="#fnref24" class="footnote-backref">↩︎</a></p>
 </li>
 </ol>
 </section>
