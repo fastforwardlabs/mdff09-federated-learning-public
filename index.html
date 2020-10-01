@@ -1722,7 +1722,7 @@ learning:</p>
      &quot;&quot;&quot;
      updates = [node.train() for node in self.nodes]
      self.fedavg([u for u, node in zip(updates, self.nodes) if node.participant])
-   self.push_model(node for node in self.nodes if node.participant)
+     self.push_model(node for node in self.nodes if node.participant)
 </code></pre>
 <p>The method <code>fedavg</code> implements the federated averaging calculation:</p>
 <pre><code class="language-python">def fedavg(self, updates):
