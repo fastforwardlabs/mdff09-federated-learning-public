@@ -43,7 +43,7 @@ speeds up the overall process by eliminating the latency associated with
 establishing a connection. Some researchers have proposed eliminating rounds by
 instructing nodes to report back only when they have accumulated significant
 changes to the model.^[See ["Deep Gradient
-Compression: Reducing the Communication Bandwidth for Distributed Training"]https://arxiv.org/abs/1712.01887 by 
+Compression: Reducing the Communication Bandwidth for Distributed Training"](https://arxiv.org/abs/1712.01887) by
 Yujun Lin et al. and ["LAG: Lazily Aggregated 
 Gradient for Communication-Efficient Distributed Learning"](https://arxiv.org/abs/1805.09965) by Tianyi Chen et al.] 
 Others have suggested decreasing the probability that a given node is asked to 
