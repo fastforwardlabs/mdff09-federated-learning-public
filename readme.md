@@ -1,4 +1,4 @@
-# FF15: Meta-Learning
+# FF09: Federated Learning - Public Version
 
 ## Dev
 
