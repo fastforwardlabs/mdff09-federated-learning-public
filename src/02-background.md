@@ -338,12 +338,12 @@ deal with others.
 In order for federated learning to be possible, the nodes must be able to
 _train_ a model. The ability to do _inference_ (i.e., apply a pretrained model)
 is not sufficient. Training is not always possible on edge devices such as
-specialized IoT hardware. This is particularly true in the case of neural networks. 
-This difficulty is due to the current state of the toolchain rather than anything
-fundamental, and we expect that limitation to go away in the near 
-future.^[See <<ondevice>> and
-["What
-Does It Take to Train Deep Learning Models On-Device?"](https://petewarden.com/2018/10/04/what-does-it-take-to-train-deep-learning-models-on-device/)]
+specialized IoT hardware. This is particularly true in the case of neural
+networks. This difficulty is due to the current state of the toolchain rather
+than anything fundamental, and we expect that limitation to go away in the near
+future.^[See [4.3.4 Mobile And Edge](#mobile-and-edge) and ["What Does It Take
+to Train Deep Learning Models
+On-Device?"](https://petewarden.com/2018/10/04/what-does-it-take-to-train-deep-learning-models-on-device/)]
 
 But even if you can't train on edge devices (and therefore can't use them for
 federated learning), machine learning inference on edge devices is still a

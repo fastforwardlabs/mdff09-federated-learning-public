@@ -112,7 +112,7 @@ choose our modeling approach, our prototype uses the simplest modeling approach
 that performs significantly better than a naive model. A naive model of the
 CMAPSS dataset predicts RUL by assuming that every engine in the test set has a
 total useful life of 181 time steps (the median life of engines in the training
-set).footnote:[In a more familiar classification context, the naive model is
+set).^[In a more familiar classification context, the naive model is
 usually a dummy classifier that always predicts the most prevalent class in the
 training set. Such a dummy classifier will have an accuracy equal to the
 prevalence of that class. At a minimum, a trained model should have an accuracy
@@ -132,17 +132,18 @@ useful life.
 
 Despite its simplicity, this formulation results in a model that is comfortably
 better than the naive model, so we use it rather than, e.g., modeling the full
-sequence with a recurrent neural network.footnote:[See _FF04: Summarization_
+sequence with a recurrent neural network.^[See _FF04: Summarization_
 for more on recurrent neural networks. For the particular problem of modeling
 the time until an event (e.g., customer churn, engine failure), we like the
-[Weibull
-Time-to-Event RNN](https://ragulpr.github.io/2016/12/22/WTTE-RNN-Hackless-churn-modeling/). But some machine learning experts have found that an
-autoregressive feed-forward neural network (i.e., a regular or convolutional
-neural network) also works well for sequence problems. See
-[When Recurrent Models
-Don't Need to be Recurrent](https://bair.berkeley.edu/blog/2018/08/06/recurrent/)] The 400 engines in the set became 58,798 training
-examples and 16,245 test examples, each with 16 features. We standardized the
-features and target variable for numerical stability.
+[Weibull Time-to-Event
+RNN](https://ragulpr.github.io/2016/12/22/WTTE-RNN-Hackless-churn-modeling/).
+But some machine learning experts have found that an autoregressive feed-forward
+neural network (i.e., a regular or convolutional neural network) also works well
+for sequence problems. See [When Recurrent Models Don't Need to be
+Recurrent](https://bair.berkeley.edu/blog/2018/08/06/recurrent/)] The 400
+engines in the set became 58,798 training examples and 16,245 test examples,
+each with 16 features. We standardized the features and target variable for
+numerical stability.
 
 The model that learns how to predict the RUL from the 16 input features is a
 simple neural network with one hidden layer. The non-federated version of this
