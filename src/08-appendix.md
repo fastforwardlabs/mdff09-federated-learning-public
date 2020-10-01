@@ -24,7 +24,7 @@ def round(self):
      """
      updates = [node.train() for node in self.nodes]
      self.fedavg([u for u, node in zip(updates, self.nodes) if node.participant])
-   self.push_model(node for node in self.nodes if node.participant)
+     self.push_model(node for node in self.nodes if node.participant)
 ```
 
 The method `fedavg` implements the federated averaging calculation:
