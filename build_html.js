@@ -599,7 +599,7 @@ function makeHead() {
 
 <meta property="og:title" content="${title}" /> 
 <meta property="og:description" content="${description}" />
-<meta property="og:image" content="https://federated.fastforwardlabs.com/ff09-cover.png" />
+<meta property="og:image" content="https://federated.fastforwardlabs.com/figures/ff09-cover.png" />
 <meta property="og:url" content="https://federated.fastforwardlabs.com" />
 <meta name="twitter:card" content="summary_large_image" />
 
